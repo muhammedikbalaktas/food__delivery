@@ -1,0 +1,14 @@
+create table users(id int auto_increment, first_name varchar(50), last_name varchar(50), 
+email varchar(100) unique, password varchar(60),
+primary key(id)
+);
+
+create table basket(id int auto_increment, meal_id int, user_id int, primary key(id), foreign key(user_id) references users(id));
+
+create table orders(id int auto_increment, user_id int,
+total_amount decimal(10,2),
+order_date datetime default(now()),
+primary key(id),
+foreign key(user_id) references users(id)
+);
+

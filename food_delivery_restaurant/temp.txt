@@ -1,0 +1,9 @@
+create table restaurant(id int auto_increment, name varchar(50), owner_id int, primary key(id));
+
+create table meals(id int auto_increment, name varchar(50), price decimal(10, 2), 
+amount int, res_id int, foreign key(res_id) references restaurant(id) );
+
+create table orders(id int auto_increment, meal_id int, res_id int, price decimal(10,2),
+primary key(id),
+foreign key (meal_id) references meals(id),
+foreign key (res_id) references restaurant(id));
